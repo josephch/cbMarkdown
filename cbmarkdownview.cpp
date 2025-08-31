@@ -160,13 +160,16 @@ void cbMarkdownView::ShowMarkdownOf(EditorBase *eb)
     }
     wxString content = cbEd->GetControl()->GetText();
 
-
-    MMIOT* mrkdown = mkd_string(content.ToUTF8(), content.size(), MKD_FENCEDCODE | MKD_LATEX );
-    mkd_compile(mrkdown, MKD_FENCEDCODE | MKD_LATEX );
+    mkd_flag_t* flags = mkd_flags();
+    mkd_set_flag_num(flags, MKD_FENCEDCODE);
+    mkd_set_flag_num(flags, MKD_LATEX);
+    MMIOT* mrkdown = mkd_string(content.ToUTF8(), content.size(), flags);
+    mkd_compile(mrkdown, flags);
     char* html_text;
     int len = mkd_document(mrkdown, &html_text);
     wxString html_wx(html_text, len);
     mkd_cleanup(mrkdown);
+    mkd_free_flags(flags);
 
     SetPage( wxT("<head>\n<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n<style>")+ TextProvider::GetUserCss() + "</style>\n</head>" + html_wx, "");
 }
