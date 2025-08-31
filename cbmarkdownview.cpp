@@ -8,7 +8,9 @@
 
 #include "cbstyledtextctrl.h"
 #include "textProvider.h"
-
+#include "manager.h"
+#include "configmanager.h"
+#include "logmanager.h"
 
 extern "C"
 {

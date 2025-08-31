@@ -4,6 +4,13 @@
 #include <wx/file.h>
 #include "textProvider.h"
 
+#include <wx/wfstream.h>
+#include <wx/txtstrm.h>
+
+#include "manager.h"
+#include "configmanager.h"
+#include "logmanager.h"
+
 //(*InternalHeaders(MarkdownConfigPanel)
 #include <wx/intl.h>
 #include <wx/string.h>

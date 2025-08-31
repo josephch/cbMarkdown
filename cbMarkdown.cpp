@@ -4,6 +4,10 @@
 #include "MarkdownConfigPanel.h"
 #include "textProvider.h"
 #include <wx/tokenzr.h>
+#include "logmanager.h"
+#include "configmanager.h"
+#include <wx/wfstream.h>
+#include <wx/txtstrm.h>
 
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
