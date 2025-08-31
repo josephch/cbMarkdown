@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="cbMarkdown(Unix External)" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="cbMarkdown" prefix_auto="0" extension_auto="1" />
+				<Option object_output=".objs/default" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="`pkg-config --cflags codeblocks`" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="`pkg-config --cflags libmarkdown`" />
+					<Add option="-g" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config --libs codeblocks`" />
+					<Add option="`wx-config --libs`" />
+					<Add option="`pkg-config --libs libmarkdown`" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="zip -j9 cbMarkdown.zip res/*" />
+					<Add after="zip -j9 cbMarkdown.zip manifest.xml" />
+					<Add after="zip -j9 cbMarkdown.cbplugin cbMarkdown.so cbMarkdown.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="default;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-std=c++20" />
+			<Add option="-fPIC" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--no-undefined" />
+		</Linker>
+		<Unit filename="MarkdownConfigPanel.cpp" />
+		<Unit filename="MarkdownConfigPanel.h" />
+		<Unit filename="cbMarkdown.cpp" />
+		<Unit filename="cbMarkdown.h" />
+		<Unit filename="cbmarkdownview.cpp" />
+		<Unit filename="cbmarkdownview.h" />
+		<Unit filename="manifest.xml" />
+		<Unit filename="textProvider.cpp" />
+		<Unit filename="textProvider.h" />
+		<Unit filename="wxsmith/MarkdownConfigPanel.wxs" />
+		<Extensions>
+			<wxsmith version="1">
+				<resources>
+					<wxPanel wxs="wxsmith/MarkdownConfigPanel.wxs" src="MarkdownConfigPanel.cpp" hdr="MarkdownConfigPanel.h" fwddecl="0" i18n="1" name="MarkdownConfigPanel" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

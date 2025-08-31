@@ -13,3 +13,7 @@ release
 *.cbTemp
 *.cbplugin
 *.zip
+/.cache/
+/cbMarkdown.so
+/compile_commands.json
+
